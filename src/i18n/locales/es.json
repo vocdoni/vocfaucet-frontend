@@ -1,0 +1,147 @@
+{
+  "cc": {
+    "actions": {
+      "cancel": "",
+      "cancel_description": "",
+      "continue": "",
+      "end": "",
+      "end_description": "",
+      "error_title": "",
+      "pause": "",
+      "pause_description": "",
+      "waiting_title": ""
+    },
+    "empty": "",
+    "required": "",
+    "results": {
+      "date_format": "",
+      "secret_until_the_end": "",
+      "title": "",
+      "votes": ""
+    },
+    "statuses": {
+      "CANCELED": "",
+      "ENDED": "",
+      "ONGOING": "",
+      "PAUSED": "",
+      "PROCESS_UNKNOWN": "",
+      "RESULTS": "",
+      "UPCOMING": ""
+    },
+    "vote": {
+      "button": "",
+      "button_update": "",
+      "missing_answers": "",
+      "voted_description": "",
+      "voted_title": ""
+    }
+  },
+  "csp_census": {
+    "add_users": "",
+    "github": {
+      "error_fetching_users": "",
+      "selected_users": ""
+    },
+    "modal": {
+      "close": "",
+      "title": ""
+    },
+    "table": {
+      "actions": "",
+      "comsumed": "",
+      "data": "",
+      "set_as_not_voted": "",
+      "set_as_voted": ""
+    }
+  },
+  "footer": {
+    "about": "",
+    "blog": "",
+    "company": "",
+    "contact": "",
+    "developer_portal": "",
+    "developers": "",
+    "guides": "",
+    "how_we_work": "",
+    "resources": "",
+    "tutorials": "",
+    "vocdoni_api": "",
+    "vocdoni_app": ""
+  },
+  "form": {
+    "account_create": {
+      "account_description": "",
+      "account_name": "",
+      "account_name_note": "",
+      "button_create": ""
+    },
+    "error": {
+      "address_pattern": "",
+      "field_is_required": "",
+      "field_is_too_long": ""
+    },
+    "process": {
+      "error_csp_permissions": "",
+      "error_fetching_election": ""
+    },
+    "process_create": {
+      "address_title": "",
+      "address_weight": "",
+      "addresses_title": "",
+      "advanced_settings": "",
+      "autostart": "",
+      "date_end": "",
+      "date_start": "",
+      "interruptible": "",
+      "max_vote_overwrites": "",
+      "process_description": "",
+      "process_description_placeholder": "",
+      "process_title": "",
+      "process_title_placeholder": "",
+      "question_delete": "",
+      "question_identifier": "",
+      "question_placeholder": "",
+      "question_title": "",
+      "questions_title": "",
+      "secret_until_the_end": "",
+      "select_github_users": "",
+      "settings": "",
+      "submit": "",
+      "success_description": "",
+      "success_title": "",
+      "unhealthy_account": "",
+      "weighted_vote": ""
+    }
+  },
+  "link": {
+    "discord": "",
+    "github": "",
+    "twitter": ""
+  },
+  "loading": "Cargando...",
+  "logout": "",
+  "menu": {
+    "connect": "Conectar",
+    "create_process": "Crear proceso"
+  },
+  "organization": {
+    "elections_list_empty": ""
+  },
+  "process": {
+    "date": {
+      "ended": "Finalizado",
+      "ends": "Finaliza",
+      "relative": "{{ date, relative(past: hace %time; future: en %time) }}",
+      "starts": "Empieza"
+    },
+    "status": {
+      "canceled": ""
+    },
+    "voters": ""
+  },
+  "process_actions": {
+    "pause": "",
+    "play": "",
+    "stop": ""
+  }
+}
