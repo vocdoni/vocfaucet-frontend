@@ -14,6 +14,9 @@ export const theme = extendTheme(vtheme, {
       ':root': {
         '--vcd-gradient-brand': 'linear-gradient(to right, #9526FC, #2ED3BF)',
       },
+      'body': {
+        bg: '#f2f2f2',
+      }
     },
   },
   colors,

@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 const Layout = () => {
   return (
     <Flex direction='column' minH='100vh'>
-      <Box as='header' position='relative' boxShadow='3px 3px 10px gray' zIndex={10} p={5}>
+      <Box as='header' position='relative' boxShadow='3px 3px 10px gray' zIndex={10} p={5} style={{backgroundColor: "white"}}>
         <Navbar />
       </Box>
       <Outlet />
