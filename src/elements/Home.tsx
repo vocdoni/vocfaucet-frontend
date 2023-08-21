@@ -12,8 +12,9 @@ import {
   Icon,
   Input,
   Text,
+  useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaSignInAlt } from "react-icons/fa";
@@ -33,19 +34,103 @@ const Home = () => {
     },
   });
   const { t } = useTranslation();
+  const toast = useToast();
   const [loading, setLoading] = useState<boolean>(false);
 
   const required = {
     value: true,
     message: "Field is required",
   };
+  const minLength = {
+    value: 42,
+    message: "Field is too short",
+  };
   const maxLength = {
-    value: 40,
+    value: 42,
     message: "Field is too long",
   };
 
+  // Received code from OAuth provider (github, google, etc.)
+  useEffect(() => {
+    const params: URLSearchParams = new URLSearchParams(window.location.search);
+    const provider: string | null = params.get("provider");
+    const code: string | null = params.get("code");
+    const recipient: string | null = params.get("recipient");
+    if (!code || !provider || !recipient) return;
+
+    claimTokens(provider, code, recipient);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const onSubmit = async (values: FormFields) => {
     setLoading(true);
+
+    try {
+      const prov = "github"; // TODO: This should come from the form
+
+      const params: URLSearchParams = new URLSearchParams();
+      params.append("provider", prov);
+      params.append("recipient", values.address);
+      const redirectURL: string = `${window.location.origin}${
+        window.location.pathname
+      }?${params.toString()}${window.location.hash}`;
+
+      const response = await fetch(
+        `${process.env.REACT_APP_FAUCET_URL}/oauth/authUrl/${prov}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            redirectURL,
+          }),
+        }
+      );
+      const url = await response.text();
+      // Redirect to the url
+      window.location.href = url;
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
+
+  const claimTokens = async (
+    provider: string,
+    code: string,
+    recipient: string
+  ) => {
+    setLoading(true);
+    const loadingToast = toast({
+      title: t("form.claim.loading_title"),
+      description: t("form.claim.loading_description"),
+      status: "loading",
+    });
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_FAUCET_URL}/oauth/claim/${provider}/${code}/${recipient}`
+      );
+      const data = await response.json();
+      console.log(data);
+      toast.close(loadingToast);
+      toast({
+        title: t("form.claim.success_title"),
+        description: t("form.claim.success_description"),
+        status: "success",
+        duration: 4000,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.close(loadingToast);
+      toast({
+        title: t("form.claim.error_title"),
+        description: t("form.claim.error_description"),
+        status: "error",
+        duration: 4000,
+      });
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -86,7 +171,7 @@ const Home = () => {
                 <FormControl isRequired isInvalid={!!errors.address}>
                   <Input
                     type="text"
-                    {...register("address", { required, maxLength })}
+                    {...register("address", { required, maxLength, minLength })}
                     mb={1}
                     placeholder="Wallet address that will receive the VOC tokens..."
                   />

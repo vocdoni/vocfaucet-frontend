@@ -1,21 +1,26 @@
-import { lazy } from 'react'
-import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { lazy } from "react";
+import {
+  createHashRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
 // These aren't lazy loaded to avoid excessive loaders in different locations
-import Layout from '../elements/Layout'
-import Error from '../elements/Error'
-import LayoutContents from '../elements/LayoutContents'
-import { SuspenseLoader } from './SuspenseLoader'
+import Layout from "../elements/Layout";
+import Error from "../elements/Error";
+import LayoutContents from "../elements/LayoutContents";
+import { SuspenseLoader } from "./SuspenseLoader";
 
 // Lazy loading helps splitting the final code, which helps downloading the app (theoretically)
-const ProtectedRoutes = lazy(() => import('./ProtectedRoutes'))
-const Home = lazy(() => import('../elements/Home'))
-const NotFound = lazy(() => import('../elements/NotFound'))
+const ProtectedRoutes = lazy(() => import("./ProtectedRoutes"));
+const Home = lazy(() => import("../elements/Home"));
+const NotFound = lazy(() => import("../elements/NotFound"));
 
 export const RoutesProvider = () => {
   const router = createHashRouter(
     createRoutesFromElements(
-      <Route path='/' element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route errorElement={<Error />}>
           <Route element={<LayoutContents />}>
             <Route
@@ -34,11 +39,10 @@ export const RoutesProvider = () => {
                   <ProtectedRoutes />
                 </SuspenseLoader>
               }
-            >
-            </Route>
+            ></Route>
           </Route>
           <Route
-            path='*'
+            path="*"
             element={
               <SuspenseLoader>
                 <NotFound />
@@ -48,7 +52,7 @@ export const RoutesProvider = () => {
         </Route>
       </Route>
     )
-  )
+  );
 
-  return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};
