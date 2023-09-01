@@ -21,6 +21,7 @@ import { LanguagesSlice } from "../../i18n/languages.mjs";
 import { useAccount } from "wagmi";
 import { NavLink } from "react-router-dom";
 import vocdoni_logo from "../../assets/vocdoni_logo.svg";
+import { Account } from "./Account";
 
 const Navbar = ({ ...props }) => {
   const { onClose } = useDisclosure();
@@ -86,7 +87,9 @@ const Navbar = ({ ...props }) => {
               </MenuList>
             </Menu>
           </ListItem>
-          <ListItem listStyleType="none"></ListItem>
+          <ListItem listStyleType="none">
+            <Account />
+          </ListItem>
         </List>
       </Flex>
     </Box>

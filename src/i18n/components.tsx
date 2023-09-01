@@ -1,6 +1,6 @@
 import { TFunction } from 'i18next'
 
-export const translations = (t: TFunction<string, undefined, string>) => ({
+export const translations = (t: TFunction<string, string>) => ({
   actions: {
     cancel_description: t('cc.actions.cancel_description').toString(),
     cancel: t('cc.actions.cancel').toString(),
@@ -30,14 +30,16 @@ export const translations = (t: TFunction<string, undefined, string>) => ({
     title: t('cc.results.title').toString(),
     votes: t('cc.results.votes').toString(),
   },
+  schedule: t('cc.schedule').toString(),
   // status badge
   statuses: {
-    CANCELED: t('cc.statuses.CANCELED').toString(),
-    ENDED: t('cc.statuses.ENDED').toString(),
-    ONGOING: t('cc.statuses.ONGOING').toString(),
-    PAUSED: t('cc.statuses.PAUSED').toString(),
-    RESULTS: t('cc.statuses.RESULTS').toString(),
-    UPCOMING: t('cc.statuses.UPCOMING').toString(),
-    PROCESS_UNKNOWN: t('cc.statuses.PROCESS_UNKNOWN').toString(),
+    canceled: t('cc.statuses.canceled').toString(),
+    ended: t('cc.statuses.ended').toString(),
+    invalid: t('cc.statuses.invalid').toString(),
+    ongoing: t('cc.statuses.ongoing').toString(),
+    paused: t('cc.statuses.paused').toString(),
+    results: t('cc.statuses.results').toString(),
+    upcoming: t('cc.statuses.upcoming').toString(),
+    process_unknown: t('cc.statuses.process_unknown').toString(),
   },
 })

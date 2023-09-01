@@ -4,54 +4,42 @@ import {
   Card,
   CardBody,
   Flex,
-  FormControl,
-  FormErrorMessage,
   Grid,
   GridItem,
   Heading,
   Icon,
-  Input,
   Text,
   useToast,
 } from "@chakra-ui/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useClient } from "@vocdoni/react-providers";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaSignInAlt } from "react-icons/fa";
+import { useAccount } from "wagmi";
 
 interface FormFields {
   address: string;
 }
 
 const Home = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { handleSubmit } = useForm({
     defaultValues: {
       address: "",
     },
   });
+  const { client, account } = useClient();
+
+  const { isConnected, address } = useAccount();
   const { t } = useTranslation();
   const toast = useToast();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const required = {
-    value: true,
-    message: "Field is required",
-  };
-  const minLength = {
-    value: 42,
-    message: "Field is too short",
-  };
-  const maxLength = {
-    value: 42,
-    message: "Field is too long",
-  };
-
   // Received code from OAuth provider (github, google, etc.)
   useEffect(() => {
+    if (!client.wallet) return;
+
     const params: URLSearchParams = new URLSearchParams(window.location.search);
     const provider: string | null = params.get("provider");
     const code: string | null = params.get("code");
@@ -60,9 +48,11 @@ const Home = () => {
 
     claimTokens(provider, code, recipient);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [client]);
 
   const onSubmit = async (values: FormFields) => {
+    if (!isConnected) throw new Error("Wallet not connected");
+
     setLoading(true);
 
     try {
@@ -70,7 +60,7 @@ const Home = () => {
 
       const params: URLSearchParams = new URLSearchParams();
       params.append("provider", prov);
-      params.append("recipient", values.address);
+      params.append("recipient", address as string);
       const redirectURL: string = `${window.location.origin}${
         window.location.pathname
       }?${params.toString()}${window.location.hash}`;
@@ -107,11 +97,21 @@ const Home = () => {
     });
 
     try {
+      // Get the faucet receipt
       const response = await fetch(
         `${process.env.REACT_APP_FAUCET_URL}/oauth/claim/${provider}/${code}/${recipient}`
       );
       const data = await response.json();
-      console.log(data);
+
+      // Claim the tokens with the SDK
+      // if (typeof account !== "undefined") {
+      //   const info = await client.collectFaucetTokens(data.faucetPackage);
+      //   console.log("Claim tokens info", info);
+      // } else {
+      //   const info = await client.createAccount(data.faucetPackage);
+      //   console.log("Created account with faucetPackage", info);
+      // }
+
       toast.close(loadingToast);
       toast({
         title: t("form.claim.success_title"),
@@ -168,24 +168,20 @@ const Home = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 gap={3}
               >
-                <FormControl isRequired isInvalid={!!errors.address}>
-                  <Input
-                    type="text"
-                    {...register("address", { required, maxLength, minLength })}
-                    mb={1}
-                    placeholder="Wallet address that will receive the VOC tokens..."
-                  />
-                  {errors.address && (
-                    <FormErrorMessage>
-                      {errors.address?.message?.toString()}
-                    </FormErrorMessage>
-                  )}
-                </FormControl>
+                {isConnected && (
+                  <Button type="submit" isLoading={loading} colorScheme="green">
+                    <Icon mr={2} as={FaSignInAlt} />
+                    {t("Sign In")}
+                  </Button>
+                )}
 
-                <Button type="submit" isLoading={loading} colorScheme="green">
-                  <Icon mr={2} as={FaSignInAlt} />
-                  {t("Sign In")}
-                </Button>
+                {!isConnected && (
+                  <ConnectButton
+                    chainStatus="none"
+                    showBalance={false}
+                    label={t("menu.connect").toString()}
+                  />
+                )}
               </Flex>
             </CardBody>
           </Card>

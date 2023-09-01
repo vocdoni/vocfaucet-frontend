@@ -1,147 +1,328 @@
 {
+  "aside": {
+    "has_already_voted": "El teu vot s'ha registrat correctament",
+    "is_not_in_census": "No ets al cens",
+    "not_connected": "No estàs connectat",
+    "overwrite_votes_left": "Pots corregir el teu vot {{ left }} vegades.",
+    "verify_vote_on_explorer": "Verifica el vot a l'explorador",
+    "votes_one": "<span>1</span> <text>vot</text>",
+    "votes_many": "",
+    "votes_other": "<span>{{ count }}</span> <text>vots</text>"
+  },
+  "banner": {
+    "start_now": "Crea ara un procés de votació!",
+    "subtitle": "Utilitza adreces web3, vota amb un token ERC20 o amb NFTs!",
+    "title": "Vota per a les DAOs i les comunitats Web3"
+  },
+  "banner_voting_types": {
+    "anonymous_description": "Els vostres votants romandran completament anònims, gràcies a la tecnologia de proofs zk. La privacitat hauria de ser la norma.",
+    "anonymous_title": "Votació Anònima",
+    "flexible_description": "Adapteu el vostre procés de votació i cens: elecció única, votació quadràtica, voteu amb una llista de carteres o creeu un cens personalitzat.",
+    "flexible_title": "Votació Flexible",
+    "token_description": "Voteu amb tokens ERC20/ERC721 (NFT) o importeu els vostres propis tokens i voteu sense gastar gas.",
+    "token_title": "Votació amb Tokens"
+  },
   "cc": {
     "actions": {
-      "cancel": "Cancel·la el procés immediatament, sense permetre vots nous i sense comptar cap resultat (precaució: no es pot desfer)",
-      "cancel_description": "cancel·lant el procés d'elecció \"{{ election.title.default }}\"",
-      "continue": "Continua el procés immediatament, en cas que s'hagi pausat",
-      "end": "Finalitza el procés immediatament, impedint l'enviament de nous vots i mostra els resultats de votació (precaució: no es pot desfer)",
-      "end_description": "finalitzant el procés d'elecció \"{{ election.title.default }}\"",
-      "error_title": "Hi va haver un error en executar la transacció",
-      "pause": "Posa en pausa el procés de votació temporalment, fins que es reprengui manualment. Mentre el procés estigui en pausa, els votants no podran enviar vots.",
-      "pause_description": "posant en pausa el procés d'elecció \"{{ election.title.default }}\"",
+      "cancel": "Cancel·la immediatament el procés, sense permetre nous vots i sense comptabilitzar resultats (precaució: no es pot desfer)",
+      "cancel_description": "cancel·lant el procés electoral \"{{ election.title.default }}\"",
+      "continue": "Continua el procés immediatament, si s'ha pausat",
+      "end": "Finalitza immediatament el procés, impedint que es presentin nous vots, i mostra els resultats de votació (precaució: no es pot desfer)",
+      "end_description": "finalitzant el procés electoral \"{{ election.title.default }}\"",
+      "error_title": "S'ha produït algun error en executar la transacció",
+      "pause": "Posa el procés de votació en pausa temporalment, fins que es reprengui manualment. Mentre el procés està en pausa, els votants no poden enviar vots.",
+      "pause_description": "posant en pausa el procés electoral \"{{ election.title.default }}\"",
       "waiting_title": "Esperant la confirmació de la transacció..."
     },
-    "empty": "Aparentment, aquest procés no té preguntes 🤔",
+    "empty": "Sembla que aquest procés no té preguntes",
     "required": "Aquest camp és obligatori",
     "results": {
-      "date_format": "d-L-y HH:mm",
-      "secret_until_the_end": "Secret fins al final. Els resultats estaran disponibles quan el procés finalitzi el {{ endDate }}",
+      "date_format": "PPpp",
+      "secret_until_the_end": "Secret fins el final. Els resultats seran accessibles quan el procés finalitzi el {{ endDate }}",
       "title": "Resultats per a \"{{ title }}\"",
       "votes": "Vots: {{ votes }} ({{ percent }})"
     },
+    "schedule": "Votant des del {{ begin }} al {{ end }}",
     "statuses": {
-      "CANCELED": "Cancel·lat",
-      "ENDED": "Finalitzat",
-      "ONGOING": "En curs",
-      "PAUSED": "En pausa",
-      "PROCESS_UNKNOWN": "Desconegut",
-      "RESULTS": "Resultats",
-      "UPCOMING": "Properament"
+      "canceled": "Cancel·lada",
+      "ended": "Finalitzada",
+      "invalid": "Invàlida",
+      "ongoing": "En curs",
+      "paused": "Pausada",
+      "process_unknown": "Desconeguda",
+      "results": "Resultats",
+      "upcoming": "Propera"
     },
     "vote": {
       "button": "Vota",
-      "button_update": "Reenvia el vot",
+      "button_update": "Torna a enviar el vot",
       "missing_answers": "Has de respondre totes les preguntes",
-      "voted_description": "El teu ID de vot és {{ id }}. Pots utilitzar-lo per verificar el teu vot.",
-      "voted_title": "El teu vot s'ha realitzat amb èxit!"
+      "voted_description": "Per verificar el teu vot, pots utilitzar aquesta identificació única: {{ id }}",
+      "voted_title": "El teu vot s'ha registrat amb èxit!"
     }
   },
-  "csp_census": {
-    "add_users": "Afegir usuaris",
-    "github": {
-      "error_fetching_users": "S'ha produït un error en recuperar els usuaris de GitHub",
-      "selected_users": "Usuaris seleccionats"
-    },
-    "modal": {
-      "close": "Ok!",
-      "title": "Cerca usuaris de Github"
-    },
-    "table": {
-      "actions": "Accions",
-      "comsumed": "Consumit",
-      "data": "Dades",
-      "set_as_not_voted": "Establir com a no votat",
-      "set_as_voted": "Establir com a votat"
-    }
+  "copy": {
+    "address": "Copia l'adreça",
+    "copied_title": "Copiat!"
   },
+  "error": {
+    "go_back": "Torna enrere",
+    "invalid_cell_data": "Algunes fileres no contenen adreces correctes: {{rows, list}}",
+    "invalid_row_length": "Corregeix les línies {{rows, list}} del document i torna a carregar-lo",
+    "invalid_weight_type": "S'esperava trobar el pes a la primera col·lumna a les línies {{rows, list}}, però s'han trobat dades inesperades",
+    "loading_page": "Càrrega de pàgina errònia",
+    "not_found": "Ho sentim, no s'ha trobat la pàgina que estaves buscant.",
+    "return_to_home": "Ves a l'inici"
+  },
+  "error_text": "Ho sentim, no s'ha trobat la pàgina que busqueu",
   "footer": {
     "about": "Sobre nosaltres",
     "blog": "Blog",
-    "company": "empresa",
+    "company": "Empresa",
     "contact": "Contacte",
     "developer_portal": "Portal de desenvolupadors",
-    "developers": "desenvolupadors",
+    "developers": "Desenvolupadors",
     "guides": "Guies",
     "how_we_work": "Com treballem",
     "resources": "Recursos",
     "tutorials": "Tutorials",
     "vocdoni_api": "API de Vocdoni",
-    "vocdoni_app": "Aplicació Vocdoni"
+    "vocdoni_app": "APP de Vocdoni"
   },
   "form": {
     "account_create": {
-      "account_description": "",
-      "account_name": "",
-      "account_name_note": "",
-      "button_create": ""
+      "description_helper": "Una breu descripció de la teva organització",
+      "description_placeholder": "Descripció (opcional)",
+      "title_helper": "El nom de l'organització",
+      "title_placeholder": "El nom de l'organització"
+    },
+    "edit_profile": {
+      "avatar_helper": "Imatge/Logotip de la teva organització",
+      "avatar_placeholder": "URL de la imatge",
+      "btn": "Desar"
     },
     "error": {
-      "address_pattern": "Només s'admeten adreces hexadecimals",
+      "address_already_in_use": "Aquesta adreça ja és al cens",
+      "address_pattern": "Només s'admeten adreces hexadecimals (p. ex. 0x031101A...)",
+      "avatar_error": "URL no vàlida",
       "field_is_required": "Aquest camp és obligatori",
-      "field_is_too_long": ""
-    },
-    "process": {
-      "error_csp_permissions": "",
-      "error_fetching_election": ""
+      "min_address": "Si us plau, proporciona com a mínim una adreça"
     },
     "process_create": {
-      "address_title": "Adreça {{ num }}",
-      "address_weight": "Pes",
-      "addresses_title": "Adreces",
-      "advanced_settings": "Configuració avançada",
-      "autostart": "Inici automàtic",
-      "date_end": "Data de finalització:",
-      "date_start": "Data d'inici:",
-      "interruptible": "Interrumpible",
-      "max_vote_overwrites": "Màx. de reescriptures per vot",
-      "process_description": "Descripció",
-      "process_description_placeholder": "Una descripció detallada",
-      "process_title": "Títol",
-      "process_title_placeholder": "Títol principal del procés",
-      "question_delete": "Eliminar pregunta {{ num }}",
+      "alert_info_title": "Informació",
+      "behavior": {
+        "anonymous": {
+          "description": "Anònim: els vots seran xifrats",
+          "title": "Anònim"
+        },
+        "overwrite": {
+          "description": "Sobreescriptura del vot: Permet als votants corregir el vot un cop.",
+          "title": "Sobreescriure"
+        },
+        "secret": {
+          "description": "Secret: Els resultats només seran accessibles després de tancar la votació.",
+          "title": "Secret"
+        },
+        "title": "Opcions"
+      },
+      "calendar": {
+        "date_format": "PPPPpppp",
+        "end_date": "Data de finalització",
+        "end_date_description": "Aquesta elecció començarà el {{ date.begin, format }} i finalitzarà el {{ date.end, format }}, amb una durada d'aproximadament {{ date, duration }}",
+        "now": "Ara",
+        "start_date_description": "Especifica el període actiu per rebre vots. Selecciona 'Ara' per activar la proposta immediatament després de la publicació.",
+        "start_on_a_date": "Començar en una data",
+        "title": "Calendari"
+      },
+      "census": {
+        "add_button": "Afegir",
+        "description": "Seleccioneu com autenticaran i s'identificaran els votants. Trieu entre dades personalitzades (CSV), a través de la propietat d'un token o amb adreces de cartera.",
+        "max_census_slider_arialabel": "Selector de participació màxima esperada",
+        "max_census_slider_label": "Participació màxima esperada:",
+        "max_census_slider_tooltip": "{{ percent }}% ({{ voters }} votants elegibles)",
+        "spreadsheet_description": "Dades personalitzades com a informació d'usuari i contrasenya o informació personal del votant.",
+        "spreadsheet_title": "CSV",
+        "title": "Trieu el cens",
+        "token_base_description": "Utilitza un token (basat en EVM) per permetre als usuaris votar en funció de la quantitat que posseeixin.",
+        "token_base_title": "Basat en token",
+        "token_title": "Cens basat en tokens",
+        "tokens_placeholder": "Seleccioneu un token",
+        "wallet_address_description": "Identifica els teus votants per les seves adreces de cartera. Hauran d'iniciar la sessió amb un proveïdor de carteres com Metamask.",
+        "wallet_address_title": "Adreces de cartera"
+      },
+      "confirm": {
+        "anonymous": "Anònim",
+        "census": "Cens",
+        "census_preview_is_shortened": "(la llista prèvia està limitada a {{ limit }} resultats)",
+        "census_total_people_one": "Una persona podrà votar en aquesta votació",
+        "census_total_people_many": "{{ count }} persones podran votar en aquesta votació",
+        "census_total_people_other": "",
+        "close": "Tanca",
+        "configuration": "Configuració",
+        "confirmation": "Confirmació",
+        "confirmation_terms_and_conditions": "Accepto els <link>termes i condicions</link> de Vocdoni",
+        "confirmation_valid_info": "Confirmo que aquesta informació és correcta i vàlida",
+        "create_button": "Crea",
+        "dates": "Data",
+        "description": "Descripció",
+        "edit": "Editar",
+        "election_info": "Informació",
+        "questions_one": "Pregunta",
+        "questions_many": "Preguntes",
+        "questions_other": "Preguntes",
+        "secret_until_the_end": "Secret fins el final",
+        "title": "Títol",
+        "vote_overwritte": "Sobreescriure vot"
+      },
+      "confirm_spreadsheet_removal": "Estàs segur que vols canviar-ho? Fent-ho s'esborrarà el fitxer que has carregat actualment.",
+      "creating_process": "Creant el procés...",
+      "do_not_close": "Aquesta acció pot trigar una estona, no tanquis aquesta pestanya",
+      "meta": {
+        "description": "Proporciona un títol i una descripció clars. Això ajudarà als votants a entendre el propòsit del vot.",
+        "description_helper": "Una breu descripció de la teva elecció",
+        "description_placeholder": "Descripció (opcional)",
+        "title": "Informació de l'elecció",
+        "title_helper": "El títol / propòsit de l'elecció",
+        "title_placeholder": "El títol de l'elecció"
+      },
+      "navbar": {
+        "close_form_btn": "Tanca el formulari"
+      },
+      "next_step": "Següent",
+      "previous_step": "Anterior",
+      "question": {
+        "add_new_option": "Afegeix una nova opció",
+        "aside": "Títol de la pregunta",
+        "description_placeholder": "Escriu aquí una descripció de la pregunta (opcional)",
+        "option_placeholder": "Opció",
+        "title_placeholder": "El títol de la teva pregunta..."
+      },
+      "question_delete": "Elimina pregunta {{ num }}",
       "question_identifier": "Pregunta {{ num }}",
       "question_placeholder": "Títol de la pregunta {{ num }}",
       "question_title": "Títol",
       "questions_title": "Preguntes",
-      "secret_until_the_end": "Secret fins al final",
-      "select_github_users": "",
-      "settings": "Configuració de l'elecció",
-      "submit": "Crear procés",
-      "success_description": "Redirigint a la pàgina del procés d'elecció...",
-      "success_title": "Procés d'elecció creat amb èxit",
-      "unhealthy_account": "",
-      "weighted_vote": "Vot ponderat"
+      "running_checks": "Executant les comprovacions necessàries, espera...",
+      "spreadsheet": {
+        "download_template_btn": "Descarregar plantilla",
+        "download_template_description": "Descarrega la plantilla original per completar la teva llista de votants",
+        "preview": {
+          "description": "Els membres hauran de completar aquest formulari per accedir a la votació",
+          "title": "Vista prèvia del formulari",
+          "upload_new_list": "Pujar una nova llista de votants"
+        },
+        "requirements": {
+          "list_one": "La primera fila s'utilitzarà com el nom dels camps que els votants hauran de omplir.",
+          "list_two": "Els camps no distingeixen entre majúscules i minúscules, els espais en blanc s'ignoraran i els signes diacrítics es transformaran en lletres simples.",
+          "list_three": "Si es selecciona 'Vot ponderat', la primera columna ha de ser un enter amb el pes del vot del votant.",
+          "title": "Requisits"
+        },
+        "template": {
+          "email": "Email",
+          "firstname": "Nom",
+          "lastname": "Cognoms",
+          "weight": "Pes"
+        }
+      },
+      "spreadsheet_total_rows_one": "El cens només conté un votant",
+      "spreadsheet_total_rows_many": "",
+      "spreadsheet_total_rows_other": "Grandària del cens: {{count}} votants",
+      "steps": {
+        "census": "Cens",
+        "checks": "Comprovacions",
+        "confirm": "Confirmar",
+        "info": "Informació",
+        "questions": "Preguntes"
+      },
+      "success_description": "Redirigint-te a la pàgina del procés electoral...",
+      "success_title": "Procés electoral creat amb èxit",
+      "unhealthy_account": "Has de crear una organització abans de crear la primera elecció.",
+      "weighted": "Vot ponderat"
     }
   },
   "link": {
-    "discord": "Enllaç al discord de Vocdoni",
-    "github": "Enllaç al github de Vocdoni",
+    "discord": "Enllaç al Discord de Vocdoni",
+    "github": "Enllaç al Github de Vocdoni",
     "twitter": "Enllaç al Twitter de Vocdoni"
   },
   "loading": "Carregant...",
-  "logout": "Tancar sessió",
   "menu": {
-    "connect": "Connecta",
-    "create_process": "Crear procés"
+    "burger_aria_label": "menú d'usuari",
+    "connect": "Connectar",
+    "copy_aria_label": "copiar adreça",
+    "create": "Crear Procés",
+    "create_process": "Nou procés",
+    "documentation": "Documentació",
+    "get_more": "Obtenir-ne més",
+    "how_it_works": "Com funciona",
+    "languages": "Idiomes",
+    "languages_list": "",
+    "login": "Iniciar sessió",
+    "logout": "Tancar sessió",
+    "my_org": "La Meva Org",
+    "my_org_aria_label": "La meva organització",
+    "new_process": "Nou procés",
+    "organization": "Editar Organització",
+    "privacy": "Privadesa",
+    "terms": "Termes",
+    "wallet": "Cartera"
   },
+  "open_in_explorer": "Obre a l'explorador",
   "organization": {
-    "elections_list_empty": "Aquesta organització encara no té eleccions"
+    "avatar_alt": "Imatge d'avatar de l'organització {{ name }}",
+    "elections": "Eleccions",
+    "elections_list_empty": {
+      "description": "En començar fent la teva primera elecció, pots triar entre diferents tipus d'autenticació pel teu vot.",
+      "footer": "Obtén més informació sobre com crear eleccions <link>en aquesta guia</link>.",
+      "not_owner": "Aquesta organització encara no té eleccions.",
+      "title": "Crea la teva primera elecció"
+    },
+    "name_long": "<strong>{{ name }}</strong> ({{ address }})"
   },
   "process": {
+    "actions": "Accions",
+    "census": "Cens",
+    "census_strategies": {
+      "spreadsheet": "CSV",
+      "token": "Token ({{ token.type, uppercase }}): {{ token.symbol }}",
+      "web3": "Adreces Web3"
+    },
+    "created_by": "Creat per",
     "date": {
-      "ended": "Procés finalitzat",
-      "ends": "Acaba el procés",
+      "ended": "Finalitzat",
+      "ends": "Finalitza",
       "relative": "{{ date, relative(past: fa %time; future: en %time) }}",
       "starts": "Comença el procés"
     },
-    "status": {
-      "canceled": "Procés cancel·lat"
+    "is_anonymous": {
+      "description": "Els vots són encriptats",
+      "title": "Anònim"
     },
+    "is_invalid": "Aquest procés té dades no vàlides i per tant no pot carregar-se",
+    "people_in_census_one": "Un votant",
+    "people_in_census_many": "",
+    "people_in_census_other": "{{ count }} votants",
+    "questions": "Preguntes",
+    "results": "Resultats",
+    "status": {
+      "active": "Actiu",
+      "canceled": "Procés cancel·lat",
+      "ended": "Finalitzat",
+      "paused": "Procés en pausa",
+      "paused_description": "",
+      "unknown": "Desconegut",
+      "upcoming": "Previst"
+    },
+    "strategy": "Estratègia",
     "voters": "Votants"
   },
   "process_actions": {
-    "pause": "pausa",
-    "play": "reproduir",
-    "stop": "aturar"
+    "pause": "Pausa",
+    "play": "Reprodueix",
+    "stop": "Atura"
+  },
+  "uploader": {
+    "click_or_drag_and_drop": "<p1>Puja o arrossega i deixa anar aquí la llista de votants</p1><p2>(Formats permesos: CSV, XLSX i ODS)</p2>",
+    "drop_here": "Deixa anar aquí"
   }
 }
