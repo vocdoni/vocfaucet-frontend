@@ -29,7 +29,12 @@ const Home = () => {
       address: "",
     },
   });
-  const { client, account } = useClient();
+  const {
+    client,
+    account,
+    loading: accoutLoading,
+    loaded: accoutLoaded,
+  } = useClient();
 
   const { isConnected, address } = useAccount();
   const { t } = useTranslation();
@@ -39,6 +44,8 @@ const Home = () => {
   // Received code from OAuth provider (github, google, etc.)
   useEffect(() => {
     if (!client.wallet) return;
+    if (accoutLoading.account) return; // If it's loading, we know it's not ready yet
+    if (!accoutLoaded.account) return; // We need the account to be loaded (final status)
 
     const params: URLSearchParams = new URLSearchParams(window.location.search);
     const provider: string | null = params.get("provider");
@@ -48,7 +55,7 @@ const Home = () => {
 
     claimTokens(provider, code, recipient);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [client]);
+  }, [client, accoutLoading]);
 
   const onSubmit = async (values: FormFields) => {
     if (!isConnected) throw new Error("Wallet not connected");
@@ -104,13 +111,13 @@ const Home = () => {
       const data = await response.json();
 
       // Claim the tokens with the SDK
-      // if (typeof account !== "undefined") {
-      //   const info = await client.collectFaucetTokens(data.faucetPackage);
-      //   console.log("Claim tokens info", info);
-      // } else {
-      //   const info = await client.createAccount(data.faucetPackage);
-      //   console.log("Created account with faucetPackage", info);
-      // }
+      if (typeof account !== "undefined") {
+        const info = await client.collectFaucetTokens(data.faucetPackage);
+        console.log("Claim tokens info", info);
+      } else {
+        const info = await client.createAccount(data.faucetPackage);
+        console.log("Created account with faucetPackage", info);
+      }
 
       toast.close(loadingToast);
       toast({

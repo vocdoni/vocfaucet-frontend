@@ -5785,9 +5785,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vocdoni/sdk@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@vocdoni/sdk@npm:0.1.1"
+"@vocdoni/sdk@portal:/Users/aleix/Sites/vocdoni/vocdoni-sdk::locator=vocfaucet-frontend%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@vocdoni/sdk@portal:/Users/aleix/Sites/vocdoni/vocdoni-sdk::locator=vocfaucet-frontend%40workspace%3A."
   dependencies:
     "@ethersproject/abstract-signer": ^5.7.0
     "@ethersproject/address": ^5.7.0
@@ -5812,9 +5812,8 @@ __metadata:
     wasmcurves: 0.2.1
     web-worker: ^1.2.0
     yup: ^0.32.11
-  checksum: 8c8120dc2751deabb86256898a7597113ff4998493b004620bab2db1486d66e961df85cf69999ea9817843629825a9ba6d86c7484619618c0c6a0da06eeac648
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "@wagmi/chains@npm:0.2.22":
   version: 0.2.22

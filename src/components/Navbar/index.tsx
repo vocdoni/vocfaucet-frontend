@@ -49,19 +49,6 @@ const Navbar = ({ ...props }) => {
           alignItems="center"
           gap={4}
         >
-          {isConnected && (
-            <ListItem
-              listStyleType="none"
-              onClick={onClose}
-              whiteSpace="nowrap"
-            >
-              <NavLink to="/processes/create">
-                <Button colorScheme="buttons.primary">
-                  {t("menu.create_process")}
-                </Button>
-              </NavLink>
-            </ListItem>
-          )}
           <ListItem listStyleType="none" display="flex" cursor="pointer">
             <Menu>
               <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
