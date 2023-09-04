@@ -18,15 +18,12 @@ import { FaGlobeAmericas } from "react-icons/fa";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguagesSlice } from "../../i18n/languages.mjs";
-import { useAccount } from "wagmi";
-import { NavLink } from "react-router-dom";
 import vocdoni_logo from "../../assets/vocdoni_logo.svg";
 import { Account } from "./Account";
 
 const Navbar = ({ ...props }) => {
   const { onClose } = useDisclosure();
-  const { t, i18n } = useTranslation();
-  const { isConnected } = useAccount();
+  const { i18n } = useTranslation();
 
   const languages = LanguagesSlice as { [key: string]: string };
 

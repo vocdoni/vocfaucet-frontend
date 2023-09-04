@@ -112,11 +112,11 @@ const Home = () => {
 
       // Claim the tokens with the SDK
       if (typeof account !== "undefined") {
-        const info = await client.collectFaucetTokens(data.faucetPackage);
-        console.log("Claim tokens info", info);
+        await client.collectFaucetTokens(data.faucetPackage);
       } else {
-        const info = await client.createAccount(data.faucetPackage);
-        console.log("Created account with faucetPackage", info);
+        await client.createAccount({
+          faucetPackage: data.faucetPackage,
+        });
       }
 
       toast.close(loadingToast);
