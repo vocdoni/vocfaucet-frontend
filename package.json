@@ -15,11 +15,11 @@
     "@types/node": "^12.0.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@vitejs/plugin-react": "^4.0.4",
     "@vocdoni/chakra-components": "^0.5.10",
-    "@vocdoni/rainbowkit-wallets": "latest",
+    "@vocdoni/rainbowkit-wallets": "^0.1.2",
     "@vocdoni/react-providers": "^0.1.7",
-    "@vocdoni/sdk": "^0.1.1",
-    "assert": "^2.0.0",
+    "@vocdoni/sdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "ethers": "5",
     "framer-motion": "^10.15.0",
@@ -31,17 +31,21 @@
     "react-icons": "^3.0.0",
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
     "remark-gfm": "^3.0.1",
     "typescript": "^4.6.3",
+    "vite": "^4.4.9",
+    "vite-plugin-node-polyfills": "^0.12.0",
+    "vite-tsconfig-paths": "^4.2.0",
     "wagmi": "^0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "lint": "prettier --check src",
+    "lint:fix": "prettier --write src",
+    "translations": "i18next"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -57,8 +61,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "resolutions": {
-    "@vocdoni/sdk": "portal:/Users/aleix/Sites/vocdoni/vocdoni-sdk"
   }
 }
