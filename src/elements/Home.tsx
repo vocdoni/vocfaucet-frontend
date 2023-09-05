@@ -14,27 +14,12 @@ import {
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useClient } from "@vocdoni/react-providers";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import {
-  FaFacebook,
-  FaGithub,
-  FaGoogle,
-  FaLinkedin,
-  FaSignInAlt,
-} from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { useAccount } from "wagmi";
-
-interface FormFields {
-  address: string;
-}
+import useFaucet from "../hooks/useFaucet";
 
 const Home = () => {
-  const { handleSubmit } = useForm({
-    defaultValues: {
-      address: "",
-    },
-  });
   const {
     client,
     account,
@@ -42,9 +27,10 @@ const Home = () => {
     loaded: accoutLoaded,
   } = useClient();
 
-  const { isConnected, address } = useAccount();
+  const { isConnected } = useAccount();
   const { t } = useTranslation();
   const toast = useToast();
+  const { oAuthSignInURL, faucetReceipt } = useFaucet();
   const [loading, setLoading] = useState<boolean>(false);
 
   // Received code from OAuth provider (github, google, etc.)
@@ -63,37 +49,13 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [client, accoutLoading]);
 
-  const onSubmit = async (values: FormFields) => {
-    if (!isConnected) throw new Error("Wallet not connected");
-
+  const handleSignIn = async (provider: string) => {
     setLoading(true);
-
     try {
-      const prov = "github"; // TODO: This should come from the form
-
-      const params: URLSearchParams = new URLSearchParams();
-      params.append("provider", prov);
-      params.append("recipient", address as string);
-      const redirectURL: string = `${window.location.origin}${
-        window.location.pathname
-      }?${params.toString()}${window.location.hash}`;
-
-      const response = await fetch(
-        `${process.env.REACT_APP_FAUCET_URL}/oauth/authUrl/${prov}`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            redirectURL,
-          }),
-        }
-      );
-      const url = await response.text();
-      // Redirect to the url
-      window.location.href = url;
+      window.location.href = await oAuthSignInURL(provider);
     } catch (error) {
       console.log(error);
     }
-
     setLoading(false);
   };
 
@@ -111,10 +73,8 @@ const Home = () => {
 
     try {
       // Get the faucet receipt
-      const response = await fetch(
-        `${process.env.REACT_APP_FAUCET_URL}/oauth/claim/${provider}/${code}/${recipient}`
-      );
-      const data = await response.json();
+      const data = await faucetReceipt(provider, code, recipient);
+      console.log("claimTokens", data);
 
       // Claim the tokens with the SDK
       if (typeof account !== "undefined") {
@@ -175,24 +135,20 @@ const Home = () => {
                 sign in. We request read-only access.
               </Text>
 
-              <Flex
-                as="form"
-                direction="column"
-                onSubmit={handleSubmit(onSubmit)}
-                gap={3}
-              >
+              <Flex direction="column" gap={3}>
                 {isConnected && (
                   <Flex direction="row" gap="2">
                     <Button
                       type="submit"
                       isLoading={loading}
                       colorScheme="purple"
+                      onClick={() => handleSignIn("github")}
                     >
                       <Icon mr={2} as={FaGithub} />
                       {t("Sign In with Github")}
                     </Button>
 
-                    <Button
+                    {/* <Button
                       type="submit"
                       isLoading={loading}
                       colorScheme="blackAlpha"
@@ -217,7 +173,7 @@ const Home = () => {
                     >
                       <Icon mr={2} as={FaLinkedin} />
                       {t("Sign In with LinkedIn")}
-                    </Button>
+                    </Button> */}
                   </Flex>
                 )}
 
