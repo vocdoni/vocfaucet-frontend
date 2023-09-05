@@ -16,7 +16,13 @@ import { useClient } from "@vocdoni/react-providers";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { FaSignInAlt } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaGoogle,
+  FaLinkedin,
+  FaSignInAlt,
+} from "react-icons/fa";
 import { useAccount } from "wagmi";
 
 interface FormFields {
@@ -165,8 +171,8 @@ const Home = () => {
                 Request Tokens
               </Heading>
               <Text variant="p" mb={5} mt={5}>
-                To prevent faucet botting, you must sign in with Gmail or
-                Github. We request read-only access.
+                To prevent faucet botting, you must connect your web3 wallet and
+                sign in. We request read-only access.
               </Text>
 
               <Flex
@@ -176,10 +182,43 @@ const Home = () => {
                 gap={3}
               >
                 {isConnected && (
-                  <Button type="submit" isLoading={loading} colorScheme="green">
-                    <Icon mr={2} as={FaSignInAlt} />
-                    {t("Sign In")}
-                  </Button>
+                  <Flex direction="row" gap="2">
+                    <Button
+                      type="submit"
+                      isLoading={loading}
+                      colorScheme="purple"
+                    >
+                      <Icon mr={2} as={FaGithub} />
+                      {t("Sign In with Github")}
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      isLoading={loading}
+                      colorScheme="blackAlpha"
+                    >
+                      <Icon mr={2} as={FaGoogle} />
+                      {t("Sign In with Google")}
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      isLoading={loading}
+                      colorScheme="facebook"
+                    >
+                      <Icon mr={2} as={FaFacebook} />
+                      {t("Sign In with Facebook")}
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      isLoading={loading}
+                      colorScheme="linkedin"
+                    >
+                      <Icon mr={2} as={FaLinkedin} />
+                      {t("Sign In with LinkedIn")}
+                    </Button>
+                  </Flex>
                 )}
 
                 {!isConnected && (
