@@ -3,11 +3,6 @@ import { defineConfig, loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 
-let vocdoniEnvironment = process.env.VOCDONI_ENVIRONMENT;
-if (!vocdoniEnvironment) {
-  vocdoniEnvironment = "stg";
-}
-
 const outDir = process.env.BUILD_PATH;
 const base = process.env.BASE_URL || "";
 
@@ -20,7 +15,9 @@ export default defineConfig(({ command, mode }) => {
       outDir,
     },
     define: {
-      "import.meta.env.VOCDONI_ENVIRONMENT": JSON.stringify(vocdoniEnvironment),
+      "import.meta.env.REACT_APP_VOCDONI_ENVIRONMENT": JSON.stringify(
+        env.REACT_APP_VOCDONI_ENVIRONMENT
+      ),
       "import.meta.env.REACT_APP_FAUCET_URL": JSON.stringify(
         env.REACT_APP_FAUCET_URL
       ),
