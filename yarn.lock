@@ -3373,11 +3373,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vocdoni/chakra-components@npm:^0.5.10":
-  version: 0.5.10
-  resolution: "@vocdoni/chakra-components@npm:0.5.10"
+"@vocdoni/chakra-components@npm:^0.5.11":
+  version: 0.5.11
+  resolution: "@vocdoni/chakra-components@npm:0.5.11"
   dependencies:
-    "@vocdoni/react-providers": 0.1.7
+    "@vocdoni/react-providers": 0.1.8
   peerDependencies:
     "@chakra-ui/alert": ^2.0.18
     "@chakra-ui/button": ^2.0.18
@@ -3395,12 +3395,12 @@ __metadata:
     "@chakra-ui/tag": ^3.0.0
     "@chakra-ui/theme": ^3.0.0
     "@chakra-ui/toast": ^6.1.1
-    "@vocdoni/sdk": ">= 0.1.1"
+    "@vocdoni/sdk": ">= 0.3.0"
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
     react-markdown: ">= 8.0.0"
     remark-gfm: ">= 2.0.0"
-  checksum: f070a1ae0b91cad9c0e6ddb20ceed04746d55e1726e048758e8d8ea0d9973e32963203bd0261f7cca6c3fdd84d655c3de263f44f2c7fb713381f0b2d0f10e627
+  checksum: b826891f4f3b6637a7f56f0c6b2234f96a497949b9613515e0ba1d9f647b6fe1defd711fee618228dec138f87d75d626e6b6208065a932103be3211d4a3728c3
   languageName: node
   linkType: hard
 
@@ -3425,21 +3425,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vocdoni/react-providers@npm:0.1.7, @vocdoni/react-providers@npm:^0.1.7":
-  version: 0.1.7
-  resolution: "@vocdoni/react-providers@npm:0.1.7"
+"@vocdoni/react-providers@npm:0.1.8, @vocdoni/react-providers@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "@vocdoni/react-providers@npm:0.1.8"
   dependencies:
-    "@vocdoni/sdk": ^0.1.1
+    "@vocdoni/sdk": ^0.3.0
   peerDependencies:
-    "@vocdoni/sdk": ^0.1.1
+    "@vocdoni/sdk": ^0.3.0
     react: ">= 16.8.0"
-  checksum: 1e9d5e21fcda51c2d088a91cbff7e5f7d8f7292498c01380c04025b832615917550f57c79dd6069d4db07cb31b685fc544b538e3359baf6812f6d4e9507c0ee8
+  checksum: 55458e799fa2f29e8ccea29c0b7d9b6e311e9e7f37ad7cfcff3b8250d66602773deed6a01483bb2094f5ec8b215c7da4b8494d32884abe2284932c91bb9357a6
   languageName: node
   linkType: hard
 
-"@vocdoni/sdk@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@vocdoni/sdk@npm:0.1.1"
+"@vocdoni/sdk@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@vocdoni/sdk@npm:0.3.0"
   dependencies:
     "@ethersproject/abstract-signer": ^5.7.0
     "@ethersproject/address": ^5.7.0
@@ -3464,38 +3464,7 @@ __metadata:
     wasmcurves: 0.2.1
     web-worker: ^1.2.0
     yup: ^0.32.11
-  checksum: 8c8120dc2751deabb86256898a7597113ff4998493b004620bab2db1486d66e961df85cf69999ea9817843629825a9ba6d86c7484619618c0c6a0da06eeac648
-  languageName: node
-  linkType: hard
-
-"@vocdoni/sdk@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@vocdoni/sdk@npm:0.2.0"
-  dependencies:
-    "@ethersproject/abstract-signer": ^5.7.0
-    "@ethersproject/address": ^5.7.0
-    "@ethersproject/bignumber": ^5.7.0
-    "@ethersproject/bytes": ^5.7.0
-    "@ethersproject/keccak256": ^5.7.0
-    "@ethersproject/providers": ^5.7.1
-    "@ethersproject/sha2": ^5.7.0
-    "@ethersproject/signing-key": ^5.7.0
-    "@ethersproject/strings": ^5.7.0
-    "@ethersproject/units": ^5.7.0
-    "@ethersproject/wallet": ^5.7.0
-    "@size-limit/file": ^8.2.4
-    "@vocdoni/proto": 1.15.3
-    axios: 0.27.2
-    blake2b: ^2.1.4
-    iso-language-codes: ^1.1.0
-    readable-stream: ^4.4.2
-    tiny-invariant: ^1.3.1
-    tweetnacl: ^1.0.3
-    wasmbuilder: ^0.0.16
-    wasmcurves: 0.2.1
-    web-worker: ^1.2.0
-    yup: ^0.32.11
-  checksum: 220a6eaf03d9b69ec402a69f32ec779c165f013699cd78d979a01bca4a74ec7c897de98d9a59d9adcd77121c78eca1a098c596632bd6474721b5511f38ebd489
+  checksum: 913e49984177b5f991144d103018cc5555b303be4083645af69c0a7dbafd3e4f3430b1b976624734979e8452474216ed17d0f73a3bb445b5ad0eae336eeb2a1a
   languageName: node
   linkType: hard
 
@@ -9727,10 +9696,10 @@ __metadata:
     "@types/react": ^18.0.9
     "@types/react-dom": ^18.0.4
     "@vitejs/plugin-react": ^4.0.4
-    "@vocdoni/chakra-components": ^0.5.10
+    "@vocdoni/chakra-components": ^0.5.11
     "@vocdoni/rainbowkit-wallets": ^0.1.2
-    "@vocdoni/react-providers": ^0.1.7
-    "@vocdoni/sdk": ^0.2.0
+    "@vocdoni/react-providers": ^0.1.8
+    "@vocdoni/sdk": ^0.3.0
     date-fns: ^2.30.0
     ethers: 5
     framer-motion: ^10.15.0
