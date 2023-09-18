@@ -74,7 +74,6 @@ const Home = () => {
     try {
       // Get the faucet receipt
       const data = await faucetReceipt(provider, code, recipient);
-      console.log("claimTokens", data);
 
       // Claim the tokens with the SDK
       if (typeof account !== "undefined") {
@@ -112,14 +111,10 @@ const Home = () => {
         <GridItem display="flex" justifyContent="center" alignItems="center">
           <Box width={"80%"}>
             <Heading as={"h1"} size={"xl"}>
-              Vocdoni Tokens Faucet
+              {t("home.title")}
             </Heading>
             <Text variant="p" mt={10} mb={10}>
-              For developing with Vocdoni, you need tokens for certain actions
-              (create an election, change election status, etc.). The nº of
-              tokens you will need to create an election will be determined by
-              different factors lik census size, election duration, election
-              params, etc.
+              {t("home.description")}
             </Text>
           </Box>
         </GridItem>
@@ -128,11 +123,10 @@ const Home = () => {
           <Card width={"80%"}>
             <CardBody>
               <Heading as={"h2"} size={"sm"}>
-                Request Tokens
+                {t("home.request_tokens.title")}
               </Heading>
               <Text variant="p" mb={5} mt={5}>
-                To prevent faucet botting, you must connect your web3 wallet and
-                sign in. We request read-only access.
+                {t("home.request_tokens.description")}
               </Text>
 
               <Flex direction="column" gap={3}>
@@ -198,22 +192,19 @@ const Home = () => {
           <Card width={"80%"}>
             <CardBody>
               <Heading as={"h2"} size={"sm"}>
-                General Information
+                {t("home.general_information.title")}
               </Heading>
               <Text variant="p" mb={5} mt={5}>
-                When you request dev tokens, you'll receive 250 tokens. <br />
-                You can claim from the faucet once every 24 hours.
+                {t("home.general_information.description")}
               </Text>
               <Text variant="p" mb={10}>
-                If you need more tokens for developing on top of the Vocdoni
-                stack, you can connect with us at tokens (at) vocdoni.io
+                {t("home.general_information.description2")}
               </Text>
             </CardBody>
           </Card>
         </GridItem>
       </Grid>
     </Flex>
-    // <h2>Know more about Vocdoni</h2>
   );
 };
 

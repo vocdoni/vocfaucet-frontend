@@ -22,7 +22,9 @@ const useFaucet = () => {
         }),
       }
     );
-    return await response.text();
+    const res = await response.json();
+    if (!res.ok) throw new Error(res.reason);
+    return Buffer.from(res.data, "base64").toString("binary");
   };
 
   const faucetReceipt = async (
@@ -35,7 +37,9 @@ const useFaucet = () => {
         import.meta.env.REACT_APP_FAUCET_URL
       }/oauth/claim/${provider}/${code}/${recipient}`
     );
-    return await response.json();
+    const res = await response.json();
+    if (!res.ok) throw new Error(res.reason);
+    return Buffer.from(res.data, "base64").toString("binary");
   };
 
   return {

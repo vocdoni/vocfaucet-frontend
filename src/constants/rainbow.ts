@@ -1,4 +1,4 @@
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { Wallet, connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   rainbowWallet,
   walletConnectWallet,
@@ -30,17 +30,25 @@ const appName = "Vocdoni's Voting Protocol Faucet";
 
 const connectors = connectorsForWallets([
   {
-    groupName: "Recommended",
+    groupName: "Popular",
     wallets: [
-      metaMaskWallet({ projectId, chains }),
+      metaMaskWallet({ chains, projectId }),
       rainbowWallet({ projectId, chains }),
-      coinbaseWallet({ appName, chains }),
-      walletConnectWallet({ projectId, chains }),
+      coinbaseWallet({ chains, appName }),
+    ],
+  },
+  {
+    groupName: "Social",
+    wallets: [
       oAuthWallet({
         chains,
-        name: "OAuth",
-        options: { oAuthServiceUrl: "https://oauth.vocdoni.net" },
-      }) as any,
+        name: "Github",
+        iconUrl: "https://i.ibb.co/db4ppPM/github-mark.png",
+        options: {
+          oAuthServiceUrl: "https://oauth.vocdoni.net/",
+          oAuthServiceProvider: "github",
+        },
+      }) as Wallet,
     ],
   },
 ]);
