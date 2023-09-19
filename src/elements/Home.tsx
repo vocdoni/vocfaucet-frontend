@@ -15,7 +15,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useClient } from "@vocdoni/react-providers";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaGithub } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useAccount } from "wagmi";
 import useFaucet from "../hooks/useFaucet";
 
@@ -142,10 +142,11 @@ const Home = () => {
                       {t("Sign In with Github")}
                     </Button>
 
-                    {/* <Button
+                    <Button
                       type="submit"
                       isLoading={loading}
                       colorScheme="blackAlpha"
+                      onClick={() => handleSignIn("google")}
                     >
                       <Icon mr={2} as={FaGoogle} />
                       {t("Sign In with Google")}
@@ -155,11 +156,12 @@ const Home = () => {
                       type="submit"
                       isLoading={loading}
                       colorScheme="facebook"
+                      onClick={() => handleSignIn("facebook")}
                     >
                       <Icon mr={2} as={FaFacebook} />
                       {t("Sign In with Facebook")}
                     </Button>
-
+                    {/* 
                     <Button
                       type="submit"
                       isLoading={loading}
