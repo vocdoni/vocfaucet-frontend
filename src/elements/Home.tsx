@@ -32,13 +32,21 @@ const Home = () => {
   const toast = useToast();
   const { oAuthSignInURL, faucetReceipt } = useFaucet();
   const [loading, setLoading] = useState<boolean>(false);
+  const [pendingClaim, setPendingClaim] = useState<boolean>(false);
 
   // Received code from OAuth provider (github, google, etc.)
   useEffect(() => {
     if (!client.wallet) return;
-    if (accoutLoading.account) return; // If it's loading, we know it's not ready yet
+    if (accoutLoading.account || pendingClaim) return; // If it's loading, we know it's not ready yet
     if (!accoutLoaded.account) return; // We need the account to be loaded (final status)
 
+    setPendingClaim(true);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [client, accoutLoading]);
+
+  useEffect(() => {
+    if (!pendingClaim) return;
     const params: URLSearchParams = new URLSearchParams(window.location.search);
     const provider: string | null = params.get("provider");
     const code: string | null = params.get("code");
@@ -46,8 +54,7 @@ const Home = () => {
     if (!code || !provider || !recipient) return;
 
     claimTokens(provider, code, recipient);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [client, accoutLoading]);
+  }, [pendingClaim]);
 
   const handleSignIn = async (provider: string) => {
     setLoading(true);
@@ -103,6 +110,7 @@ const Home = () => {
     }
 
     setLoading(false);
+    setPendingClaim(false);
   };
 
   return (
