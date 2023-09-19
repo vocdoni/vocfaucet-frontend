@@ -24,7 +24,7 @@ const useFaucet = () => {
     );
     const res = await response.json();
     if (!res.ok) throw new Error(res.reason);
-    return Buffer.from(res.data, "base64").toString("binary");
+    return res.data;
   };
 
   const faucetReceipt = async (
@@ -39,7 +39,7 @@ const useFaucet = () => {
     );
     const res = await response.json();
     if (!res.ok) throw new Error(res.reason);
-    return Buffer.from(res.data, "base64").toString("binary");
+    return res.data;
   };
 
   return {
