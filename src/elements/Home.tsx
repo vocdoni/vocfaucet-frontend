@@ -149,8 +149,7 @@ const Home = () => {
                       <Icon mr={2} as={FaGithub} />
                       {t("Sign In with Github")}
                     </Button>
-
-                    <Button
+                    {/* <Button
                       type="submit"
                       isLoading={loading}
                       colorScheme="blackAlpha"
@@ -159,7 +158,6 @@ const Home = () => {
                       <Icon mr={2} as={FaGoogle} />
                       {t("Sign In with Google")}
                     </Button>
-
                     <Button
                       type="submit"
                       isLoading={loading}
@@ -169,6 +167,7 @@ const Home = () => {
                       <Icon mr={2} as={FaFacebook} />
                       {t("Sign In with Facebook")}
                     </Button>
+                     */}
                     {/* 
                     <Button
                       type="submit"
